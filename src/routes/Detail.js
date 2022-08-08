@@ -11,7 +11,7 @@ function Detail() {
 
     const getMovie = async () => {
         const json = await(
-            await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=522ad530f050aff49180c9834add195d&language=ko`)
+            await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=522ad530f050aff49180c9834add195d&language=ko-KR`)
             ).json();
         setMovie(json);
         setGenre(json.genres);

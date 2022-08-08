@@ -11,7 +11,7 @@ import React, { useState } from "react";
 
 function App() {
   return (
-  <Router>
+  <Router basename="/react_movie_app_2022/">
     <Switch>
       <Route path="/movie/:id">
         <Detail />
