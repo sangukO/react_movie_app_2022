@@ -5,7 +5,7 @@ import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-de
 import Button from "antd-button-color";
 import Axios from "axios";
 
-function CommentList(titleData) {
+function CommentList(titleData, id) {
 
     const [comment, setComment] = useState([]);
     let dataArry = [];
@@ -20,6 +20,7 @@ function CommentList(titleData) {
         Axios.get("http://localhost:3001/", {
             params: {
                 movie_title : titleData.titleData,
+                movie_id : titleData.id,
                 comment_detail : query,
             }}).then(() => {
                 setQuery("");
@@ -86,7 +87,7 @@ function CommentList(titleData) {
                     'Accept': 'application/json',
                 },
                 params: {
-                    title : titleData.titleData
+                    id : titleData.id,
                 },
                 body: JSON.stringify(),
         });
@@ -102,7 +103,7 @@ function CommentList(titleData) {
                     'Accept': 'application/json',
                 },
                 params: {
-                    title : titleData.titleData
+                    id : titleData.id,
                 },
                 body: JSON.stringify(),
         });
@@ -195,7 +196,7 @@ function CommentList(titleData) {
 
     return  ( 
     <div>
-        <div style={{ display: "flex", justifyContent: "center"}}>
+        <div className="Title" style={{ display: "flex", justifyContent: "center"}}>
             <div style={{paddingTop:"7px", paddingLeft:"7px"}}><h3>한줄평</h3></div>
                 <div style={{ paddingLeft: "2rem" }}>
                 <Input 
@@ -210,7 +211,7 @@ function CommentList(titleData) {
                 /> <Button type="primary" size="large" onClick={submitTest}>남기기</Button>
             </div>
         </div>
-        <div  style={{ display: "flex", justifyContent: "center"}}>
+        <div className="Title" style={{ display: "flex", justifyContent: "center"}}>
             <Table style={{width:"1010px", paddingTop:"30px"}}
                 dataSource={comment} columns={columns} />
         </div>

@@ -8,6 +8,7 @@ import Detail from "./routes/Detail";
 import 'antd/dist/antd.css';
 import 'antd-button-color/dist/css/style.css';
 import React, { useState } from "react";
+import "./style.css";
 
 function App() {
   return (

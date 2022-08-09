@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import Movie from "../components/Movie";
 import People from "../components/People";
 import { Input, Dropdown, Menu, Space } from "antd";
@@ -8,11 +9,16 @@ const { Search } = Input;
 function Home() {
   let v = "1";
   const [query, setQuery] = useState("");
+  const [result, setResult] = useState("");
   const handleQuery = (e) => {
     setQuery(e.target.value);
   };
   const [searchKey, setSearchKey] = useState("");
+  const [boolean, setBoolean] = useState(false);
   const onSearch = async() => {
+    if(query == "" || query == " ") {
+      return null;
+    }
     if(searchKey == "movie") {
       const json = await (
         await fetch(
@@ -20,6 +26,8 @@ function Home() {
         )
       ).json();
       setMovies(json.results);
+      setBoolean(false);
+      setResult(query);
     }
     if (searchKey == "people") {
       const json = await (
@@ -29,6 +37,8 @@ function Home() {
         )
       ).json();
       setMovies(json.results);
+      setBoolean(true);
+      setResult(query);
     }
     v = "2";
     };
@@ -60,7 +70,7 @@ function Home() {
   };
 
   const menu = (
-    <Menu
+    <Menu className="Title"
       selectable
       defaultSelectedKeys={['0']}
       onClick={onClick}
@@ -78,16 +88,21 @@ function Home() {
   );
 
   return ( 
-    <div style={{ display: "flex", justifyContent: "center", padding: "2rem" }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
       <div>
+        <div className="Title" style={{ fontSize: "100px" }}>
+          <Link to={`/`} className="Link">
+            Today's Movies
+          </Link>
+        </div>
         <Fragment>
           <div
             style={{ display: "flex", justifyContent: "center", padding: "2rem" }}
           >
-          <div style={{ marginTop: "4px" }}>
+          <div className="Title" style={{ marginTop: "4px" }}>
             <Dropdown overlay={menu} trigger={['click']}>
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -98,7 +113,7 @@ function Home() {
             </Dropdown>
           </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <Search
+            <Search className="Title"
               placeholder="search movie"
               onChange={handleQuery}
               onSearch={onSearch}
@@ -108,15 +123,15 @@ function Home() {
             />
           </div>
         </Fragment>
-          <div style={{ marginLeft: "80px" }}>
+          <div className="Title" style={{ display: "flex", justifyContent: "center" }}>
           {v=="1"&&query ? (
-            <h1>{query} 검색</h1>
+            searchKey == "movie" ? (<h1>{query} 영화 검색</h1>) : (<h1>{query} 인물 검색</h1>)
           ) : (
-            <h1>최근 인기 영화</h1>
+            !result ? (<h1>최근 인기 영화</h1>) : (<h1>{result} 영화 검색</h1>)
           )}
           </div>
-          <div>
-          {!searchKey || searchKey == 'movie' ? (
+          <div className="Title">
+          {!searchKey || !boolean ? (
             movies.map((movie) => (
               <Movie
                 key={movie.id}

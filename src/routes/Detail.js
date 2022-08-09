@@ -1,5 +1,5 @@
 import {useEffect, useState, Component, state} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import CommentList from "../components/CommentList";
 
 
@@ -25,16 +25,21 @@ function Detail() {
         var Comment = null;
     } else {
           if(comment) {
-            var Comment = <CommentList titleData={movie.title} />
+            var Comment = <CommentList titleData={movie.title} id={movie.id} />
           } else {
-            var Comment = <CommentList titleData={movie.title} />
+            var Comment = <CommentList titleData={movie.title} id={movie.id} />
           }
     }
 
     return (
         <div>
-            <div style={{ display: "flex", justifyContent: "center", padding: "2rem" }}>
-                <div style={{display: "flex"}}>
+            <div className="Title" style={{ fontSize: "20px", display: "flex", justifyContent: "center", marginRight: "44em", marginTop:"0.5em", marginBottom: "0.5em" }}>
+                <Link to={`/`} className="Link">
+                    Today's Movies
+                </Link>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", paddingRight: "2rem", paddingBottom: "2rem", paddingLeft: "2rem" }}>
+                <div className="Title" style={{display: "flex"}}>
                     <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width={203} height={287} ></img>
                     <div style={{paddingLeft:"20px"}}>
                     <h2>{movie.title}</h2>
