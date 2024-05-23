@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Movie({ id, profile_path, title }) {
+function Movie({ id, profile_path, name }) {
     return (
         <div
             style={{
@@ -16,7 +16,7 @@ function Movie({ id, profile_path, title }) {
                     width={203}
                     height={287}
                 ></img>
-                <h2>{title}</h2>
+                <h2>{name}</h2>
             </Link>
         </div>
     );

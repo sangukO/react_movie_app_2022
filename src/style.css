@@ -1,30 +1,45 @@
-#c_id::placeholder, #c_t::placeholder, #c_d::placeholder, #w_d::placeholder {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#c_id::placeholder,
+#c_t::placeholder,
+#c_d::placeholder,
+#w_d::placeholder {
     color: #000000;
     opacity: 1;
 }
 
 @font-face {
-    font-family: 'SF_HambakSnow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+    font-family: "SF_HambakSnow";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff")
+        format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'NotoSerifKR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+    font-family: "NotoSerifKR";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff")
+        format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
 .Title {
-    font-family: 'NotoSerifKR';
+    font-family: "NotoSerifKR";
 }
 
 .Link {
-    color : rgba(0, 0, 0, 0.85);
+    color: rgba(0, 0, 0, 0.85);
 }
 
 .Link:hover {
-    color : rgba(0, 0, 0, 0.85);
+    color: rgba(0, 0, 0, 0.85);
 }
